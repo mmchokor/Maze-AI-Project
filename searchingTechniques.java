@@ -13,9 +13,6 @@ public class searchingTechniques {
   MultiTree<table> tree = new MultiTree<table>();
   public int depthvalue = 0;
 
-  // apply(char op, table before): table
-  // this method is to move the 0 cell up and down and to the right and left
-
   public table apply(char op, table before) {
     table after = new table();
     after.insertMatrix(before.getA());
@@ -67,8 +64,6 @@ public class searchingTechniques {
     return null;
   }
 
-  // find the solution of the 8 puzzle problem using depth first search
-  // depth(MultiTree<table> tree, table goal): void
   public void depth(MultiTree<table> tr, table goal) {
     tree = tr;
     depth(tree.root, goal, 0);
@@ -76,7 +71,7 @@ public class searchingTechniques {
 
   boolean found = false;
 
-  // depth(MultiTree<table> tree, table goal, int depth): void
+
   public void depth(multinode<table> node, table goal, int c) {
     c++;
 
@@ -117,8 +112,6 @@ public class searchingTechniques {
     }
   }
 
-  // find the solution of the 8 puzzle problem using iterative deepening search
-  // iterative_deepening(MultiTree<table> tree, table goal): void
   public void iterative_deepening(MultiTree<table> tr, table goal) {
     tree = tr;
     for (int i = 1; i <= 100; i++) {
@@ -127,10 +120,8 @@ public class searchingTechniques {
     }
   }
 
-  // iterative_deepening(MultiTree<table> tree, table goal, int depth): void
   boolean found1 = false;
 
-  // depth(MultiTree<table> tree, table goal, int depth): void
   public void iterative_deepening(multinode<table> node, table goal, int c) {
     c++;
 
@@ -170,10 +161,6 @@ public class searchingTechniques {
     }
   }
 
-  // solving the 8 puzzle problem using breadth first search
-  // using queues
-  // breadth(MultiTree<table> tree, table goal): void
-  // using only one method
   public void breadth(MultiTree<table> tree, table goal) {
     Queue<multinode<table>> queue = new LinkedList<multinode<table>>();
     queue.add(tree.root);
@@ -217,7 +204,6 @@ public class searchingTechniques {
     }
   }
 
-  // calculate g(n) to use in UCS
   public int getGN(multinode<table> node, table goal) {
     int counter = 0;
 
@@ -231,9 +217,6 @@ public class searchingTechniques {
     return counter;
   }
 
-  // solving the 8 pizzle problem using Uniform Cost Search (UCS)
-  // using priority queues
-  // it similiar to breadth
   public void UniformCostSearch(MultiTree<table> tre, table goal) {
     this.tree = tre;
     PriorityQueue<multinode<table>> pqueue = new PriorityQueue<multinode<table>>();
@@ -279,7 +262,6 @@ public class searchingTechniques {
     }
   }
 
-  // calculate g(n) to use in UCS
   public int getHN(multinode<table> node, table goal) {
     int sum = 0;
 
@@ -294,7 +276,6 @@ public class searchingTechniques {
     return sum;
   }
 
-  // using A*
   public void AStar(MultiTree<table> tre, table goal) {
     this.tree = tre;
     PriorityQueue<multinode<table>> pqueue = new PriorityQueue<multinode<table>>();
