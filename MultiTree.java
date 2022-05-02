@@ -1,28 +1,28 @@
 public class MultiTree<T> {
 
-    protected multinode root;
+    protected multinode<T> root;
     protected int nbnodes = 1;
-    protected multinode current = null;
+    protected multinode<T> current = null;
     
     public MultiTree()
     {
         root=null;
     }
     public MultiTree(T data) {
-        root = new multinode(data, 1);
+        root = new multinode<>(data, 1);
     }
     public void setRoot(T data){
-        root = new multinode(data, 1);
+        root = new multinode<>(data, 1);
     }
-    public void getRoot(multinode node){
+    public void getRoot(multinode<T> node){
         root = node;
     }
-    public multinode search_id(int id) {
+    public multinode<T> search_id(int id) {
         current = null;
         search_id(id, root);
         return current;
     }
-    public void search_id(int id, multinode node) {
+    public void search_id(int id, multinode<T> node) {
         if (node == null) {
             return;
         }
@@ -31,16 +31,16 @@ public class MultiTree<T> {
             return;
         } else {
             for (int i = 0; i < node.children.size(); i++) {
-                search_id(id, (multinode) node.children.get(i)); 
+                search_id(id, (multinode<T>) node.children.get(i)); 
             }
         }
     }
-    public multinode search_data(T t) {
+    public multinode<T> search_data(T t) {
         current = null;
         search_data(t, root);
         return current;
     }
-    public void search_data(T t, multinode node) {
+    public void search_data(T t, multinode<T> node) {
         if (node == null) {
             return ;
         }
@@ -50,12 +50,12 @@ public class MultiTree<T> {
             return;
         } else {
             for (int i = 0; i < node.children.size(); i++) {
-                search_data(t, (multinode) node.children.get(i));
+                search_data(t, (multinode<T>) node.children.get(i));
             }
         }
     }
     public boolean insertnode(T data, int Parentid) {
-        multinode n = search_id(Parentid);
+        multinode<T> n = search_id(Parentid);
         if (n != null) {
             n.insertchildren(data,++nbnodes);
             return true;
@@ -66,7 +66,7 @@ public class MultiTree<T> {
     {
         display(root,null);
     }
-    public void display(multinode node,multinode nodep)
+    public void display(multinode<T> node,multinode<T> nodep)
     {
         if(node!=null)
         {
@@ -80,7 +80,7 @@ public class MultiTree<T> {
             }
         }
     }
-    public void display_solution(multinode node)
+    public void display_solution(multinode<T> node)
     {
         if(node!=null)
         {

@@ -3,10 +3,6 @@ public class Queue<T> extends LinkedList<T> {
 		super();
 	}
 
-	public Queue(String na) {
-		super(na);
-	}
-
 	@Override
 	public boolean isEmpty() {
 		return first == null;
@@ -22,7 +18,7 @@ public class Queue<T> extends LinkedList<T> {
 
 	public int sizeOfQueue() {
 		int count = 0;
-		Queue<T> temp = new Queue<T>("Temp");
+		Queue<T> temp = new Queue<T>();
 		while (!isEmpty()) {
 			T t = dequeue();
 			count++;

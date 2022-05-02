@@ -1,14 +1,7 @@
 public class LinkedList<T> {
 	public Node<T> first;
-	private String name;
 
 	public LinkedList() {
-		first = null;
-		name = " ";
-	}
-
-	public LinkedList(String na) {
-		name = na;
 		first = null;
 	}
 

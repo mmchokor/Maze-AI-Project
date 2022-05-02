@@ -27,8 +27,8 @@ public class mainClass {
         searchingTechniques st = new searchingTechniques();
         // insert the before table into the multitree
         MultiTree<table> tree = new MultiTree<table>(before);
-        // System.out.println("Solution using depth first search: ");
-        // st.depth(tree, goal);
+        System.out.println("Solution using depth first search: ");
+        st.depth(tree, goal);
 
         // // test iterative
         // System.out.println("Solution using iterative deepening search: ");

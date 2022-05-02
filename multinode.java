@@ -3,20 +3,20 @@ import java.util.ArrayList;
 public class multinode <T> {
     public T data;
     public int id=1;
-    public multinode parent=null;
-    public ArrayList<multinode> children;
+    public multinode<T> parent=null;
+    public ArrayList<multinode<T>> children;
     
     public multinode(T data,int id)
     {
         this.data = data;
-        children = new ArrayList<multinode>();
+        children = new ArrayList<multinode<T>>();
         parent=null;
         this.id=id;
     }
-    public multinode(T data,multinode p,int id)
+    public multinode(T data,multinode<T> p,int id)
     {
         this.data = data;
-        children = new ArrayList<multinode>();
+        children = new ArrayList<multinode<T>>();
         parent=p;
         this.id=id;
     }
@@ -28,7 +28,7 @@ public class multinode <T> {
     {
         return data;
     }
-    public multinode getNode(int x)
+    public multinode<T> getNode(int x)
     {
         if (x >= 0 && x < children.size()) {
             return children.get(x);
@@ -38,13 +38,13 @@ public class multinode <T> {
 
         }
     }
-    public multinode getParent()
+    public multinode<T> getParent()
     {
         return parent;
     }
     public void insertchildren(T data,int id)
     {
-        multinode n=new multinode(data,this,id);
+        multinode<T> n=new multinode<>(data,this,id);
         children.add(n);
     }
     boolean isEmpty()

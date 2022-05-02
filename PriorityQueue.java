@@ -3,9 +3,6 @@ public class PriorityQueue<T> extends LinkedList<T> {
 		super();
 	}
 
-	public PriorityQueue(String na) {
-		super(na);
-	}
 
 	@Override
 	public boolean isEmpty() {

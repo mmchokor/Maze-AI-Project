@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 public class searchingTechniques {
 
@@ -8,7 +7,6 @@ public class searchingTechniques {
   final int walkable = 1;
   final int wall = 2;
   final int walked = 3;
-
 
   MultiTree<table> tree = new MultiTree<table>();
   public int depthvalue = 0;
@@ -26,7 +24,7 @@ public class searchingTechniques {
         after.findentry(0);
         after.action = "Up";
         return after;
-      }else {
+      } else {
         return null;
       }
     } else if (op == 'D') {
@@ -36,7 +34,7 @@ public class searchingTechniques {
         after.findentry(0);
         after.action = "Down";
         return after;
-      }else {
+      } else {
         return null;
       }
     } else if (op == 'L') {
@@ -46,7 +44,7 @@ public class searchingTechniques {
         after.findentry(0);
         after.action = "Left";
         return after;
-      }else {
+      } else {
         return null;
       }
     } else if (op == 'R') {
@@ -59,18 +57,18 @@ public class searchingTechniques {
       } else {
         return null;
       }
-      
+
     }
     return null;
   }
 
   public void depth(MultiTree<table> tr, table goal) {
     tree = tr;
-    depth(tree.root, goal, 0);
+    multinode<table> table = tree.root;
+    depth(table, goal, 0);
   }
 
   boolean found = false;
-
 
   public void depth(multinode<table> node, table goal, int c) {
     c++;
@@ -79,7 +77,6 @@ public class searchingTechniques {
       return;
     }
     table table_node = (table) node.data;
-
 
     if (table_node.isEqual(goal)) {
       System.out.println("start");
@@ -166,8 +163,8 @@ public class searchingTechniques {
     queue.add(tree.root);
 
     while (!queue.isEmpty()) {
-      multinode node = queue.remove();
-      if (found) {
+      multinode<table> node = queue.remove();
+      if (found){
         break;
       }
       table table_node = (table) node.data;
@@ -223,7 +220,7 @@ public class searchingTechniques {
     pqueue.enqueue(tree.root, getGN(tree.root, goal));
 
     while (!pqueue.isEmpty()) {
-      multinode node = pqueue.dequeue();
+      multinode<table> node = pqueue.dequeue();
       if (found) {
         break;
       }
@@ -282,12 +279,11 @@ public class searchingTechniques {
     pqueue.enqueue(tree.root, (getHN(tree.root, goal) + getGN(tree.root, goal)));
 
     while (!pqueue.isEmpty()) {
-      multinode node = pqueue.dequeue();
+      multinode<table> node = pqueue.dequeue();
       if (found) {
         break;
       }
       table table_node = (table) node.data;
-
 
       if (table_node.isEqual(goal)) {
         System.out.println("start");
