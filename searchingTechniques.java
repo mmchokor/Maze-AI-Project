@@ -79,9 +79,9 @@ public class searchingTechniques {
     table table_node = (table) node.data;
 
     if (table_node.isEqual(goal)) {
-      System.out.println("start");
+      System.out.println("Starting the Maze Solver");
       tree.display_solution(node);
-      System.out.println("end");
+      System.out.println("Maze Solver finished");
       found = true;
       return;
     } else {
