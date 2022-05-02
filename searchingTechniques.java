@@ -4,6 +4,12 @@ import java.util.Stack;
 
 public class searchingTechniques {
 
+  final int character = 0;
+  final int walkable = 1;
+  final int wall = 2;
+  final int walked = 3;
+
+
   MultiTree<table> tree = new MultiTree<table>();
   public int depthvalue = 0;
 
@@ -16,35 +22,77 @@ public class searchingTechniques {
     before.findentry(0);
     int i = before.getI();
     int j = before.getJ();
-    switch (op) {
+    if (op == 'U') {
+      if (after.getA()[i - 1][j] == walkable) {
+        after.getA()[i][j] = walked;
+        after.getA()[i - 1][j] = character;
+        after.findentry(0);
+        after.action = "Up";
+        return after;
+      }else {
+        return null;
+      }
+    } else if (op == 'D') {
+      if (after.getA()[i + 1][j] == walkable) {
+        after.getA()[i][j] = walked;
+        after.getA()[i + 1][j] = character;
+        after.findentry(0);
+        after.action = "Down";
+        return after;
+      }else {
+        return null;
+      }
+    } else if (op == 'L') {
+      if (after.getA()[i][j - 1] == walkable) {
+        after.getA()[i][j] = walked;
+        after.getA()[i][j - 1] = character;
+        after.findentry(0);
+        after.action = "Left";
+        return after;
+      }else {
+        return null;
+      }
+    } else if (op == 'R') {
+      if (after.getA()[i][j + 1] == walkable) {
+        after.getA()[i][j] = walked;
+        after.getA()[i][j + 1] = character;
+        after.findentry(0);
+        after.action = "Right";
+        return after;
+      } else {
+        return null;
+      }
+      
+    }
+    /*switch (op) {
       case 'L':
-        if (j > 0) {
-          after.a[i][j] = after.a[i][j - 1];
-          after.a[i][j - 1] = 0;
+        if (after.getA()[i][j] == character && after.getA()[i][j - 1] == walkable && after.getA()[i][j - 1] != wall) {
+          after.a[i][j] = character;
+          after.a[i][j - 1] = walkable;
         } else {
           return null;
         }
         break;
       case 'R':
-        if (j < 2) {
-          after.a[i][j] = after.a[i][j + 1];
-          after.a[i][j + 1] = 0;
+        if (after.getA()[i][j] == character  && after.getA()[i][j + 1] == walkable && after.getA()[i][j + 1] != wall) {
+          after.a[i][j] = character;
+          after.a[i][j + 1] = walkable;
         } else {
           return null;
         }
         break;
       case 'D':
-        if (i < 2) {
-          after.a[i][j] = after.a[i + 1][j];
-          after.a[i + 1][j] = 0;
+        if (after.getA()[i][j] == character  && before.getA()[i + 1][j] != wall && after.getA()[i + 1][j] == walkable) {
+          after.a[i][j] = character;
+          after.a[i + 1][j] = walkable;
         } else {
           return null;
         }
         break;
       case 'U':
-        if (i > 0) {
-          after.a[i][j] = after.a[i - 1][j];
-          after.a[i - 1][j] = 0;
+        if (after.getA()[i][j] == character  && before.getA()[i - 1][j] != wall && after.getA()[i - 1][j] == walkable) {
+          after.a[i][j] = character;
+          after.a[i - 1][j] = walkable;
         } else {
           return null;
         }
@@ -52,7 +100,8 @@ public class searchingTechniques {
       default:
         return null;
     }
-    return after;
+    */
+    return null;
   }
 
   // find the solution of the 8 puzzle problem using depth first search
@@ -68,12 +117,13 @@ public class searchingTechniques {
   public void depth(multinode<table> node, table goal, int c) {
     c++;
 
-    if (c > 10 || found) {
+    if (c > 100 || found) {
       return;
     }
     table table_node = (table) node.data;
 
-    if (table_node.isequal(goal)) {
+
+    if (table_node.isEqual(goal)) {
       System.out.println("start");
       tree.display_solution(node);
       System.out.println("end");
@@ -108,7 +158,7 @@ public class searchingTechniques {
   // iterative_deepening(MultiTree<table> tree, table goal): void
   public void iterative_deepening(MultiTree<table> tr, table goal) {
     tree = tr;
-    for (int i = 1; i <= 10; i++) {
+    for (int i = 1; i <= 20000; i++) {
       depthvalue++;
       iterative_deepening(tree.root, goal, 0);
     }
@@ -217,11 +267,12 @@ public class searchingTechniques {
     }
     return counter;
   }
+
   // solving the 8 pizzle problem using Uniform Cost Search (UCS)
   // using priority queues
   // it similiar to breadth
   public void UniformCostSearch(MultiTree<table> tre, table goal) {
-    this.tree=tre;
+    this.tree = tre;
     PriorityQueue<multinode<table>> pqueue = new PriorityQueue<multinode<table>>();
     pqueue.enqueue(tree.root, getGN(tree.root, goal));
 
@@ -282,7 +333,7 @@ public class searchingTechniques {
 
   // using A*
   public void AStar(MultiTree<table> tre, table goal) {
-    this.tree=tre;
+    this.tree = tre;
     PriorityQueue<multinode<table>> pqueue = new PriorityQueue<multinode<table>>();
     pqueue.enqueue(tree.root, (getHN(tree.root, goal) + getGN(tree.root, goal)));
 
@@ -292,6 +343,7 @@ public class searchingTechniques {
         break;
       }
       table table_node = (table) node.data;
+
 
       if (table_node.isequal(goal)) {
         System.out.println("start");
@@ -307,20 +359,24 @@ public class searchingTechniques {
 
         if (new_table_Left != null) {
           tree.insertnode(new_table_Left, node.id);
-          pqueue.enqueue(tree.search_data(new_table_Left), (getHN(tree.search_data(new_table_Left), goal) + getGN(tree.search_data(new_table_Left), goal)));
+          pqueue.enqueue(tree.search_data(new_table_Left),
+              (getHN(tree.search_data(new_table_Left), goal) + getGN(tree.search_data(new_table_Left), goal)));
         }
         if (new_table_Right != null) {
           tree.insertnode(new_table_Right, node.id);
-          pqueue.enqueue(tree.search_data(new_table_Right), (getHN(tree.search_data(new_table_Right), goal) + getGN(tree.search_data(new_table_Right), goal)));
+          pqueue.enqueue(tree.search_data(new_table_Right),
+              (getHN(tree.search_data(new_table_Right), goal) + getGN(tree.search_data(new_table_Right), goal)));
 
         }
         if (new_table_Up != null) {
           tree.insertnode(new_table_Up, node.id);
-          pqueue.enqueue(tree.search_data(new_table_Up), (getHN(tree.search_data(new_table_Up), goal) + getGN(tree.search_data(new_table_Up), goal)));
+          pqueue.enqueue(tree.search_data(new_table_Up),
+              (getHN(tree.search_data(new_table_Up), goal) + getGN(tree.search_data(new_table_Up), goal)));
         }
         if (new_table_Down != null) {
           tree.insertnode(new_table_Down, node.id);
-          pqueue.enqueue(tree.search_data(new_table_Down), (getHN(tree.search_data(new_table_Down), goal) + getGN(tree.search_data(new_table_Down), goal)));
+          pqueue.enqueue(tree.search_data(new_table_Down),
+              (getHN(tree.search_data(new_table_Down), goal) + getGN(tree.search_data(new_table_Down), goal)));
         }
       }
     }
