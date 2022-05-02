@@ -4,7 +4,7 @@ public class table {
 	protected int[][] a = new int[6][6];
 	protected int i;
 	protected int j;
-	protected String action = "";
+	protected String action = "None";
 
 	public table() {
 	}
@@ -40,7 +40,7 @@ public class table {
 	@Override
 	public String toString() {
 		String str = "";
-		str += "0 went " + action + "\n";
+		str += "0 action: " + action + "\n";
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a.length; j++) {
 				str += a[i][j] + "  ";
