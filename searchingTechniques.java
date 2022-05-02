@@ -158,7 +158,7 @@ public class searchingTechniques {
   // iterative_deepening(MultiTree<table> tree, table goal): void
   public void iterative_deepening(MultiTree<table> tr, table goal) {
     tree = tr;
-    for (int i = 1; i <= 20000; i++) {
+    for (int i = 1; i <= 100; i++) {
       depthvalue++;
       iterative_deepening(tree.root, goal, 0);
     }
@@ -176,7 +176,7 @@ public class searchingTechniques {
     }
     table table_node = (table) node.data;
 
-    if (table_node.isequal(goal)) {
+    if (table_node.isEqual(goal)) {
       System.out.println("start");
       tree.display_solution(node);
       System.out.println("end");
@@ -222,7 +222,7 @@ public class searchingTechniques {
       }
       table table_node = (table) node.data;
 
-      if (table_node.isequal(goal)) {
+      if (table_node.isEqual(goal)) {
         System.out.println("start");
         tree.display_solution(node);
         System.out.println("end");
@@ -283,7 +283,7 @@ public class searchingTechniques {
       }
       table table_node = (table) node.data;
 
-      if (table_node.isequal(goal)) {
+      if (table_node.isEqual(goal)) {
         System.out.println("start");
         tree.display_solution(node);
         System.out.println("end");
@@ -345,7 +345,7 @@ public class searchingTechniques {
       table table_node = (table) node.data;
 
 
-      if (table_node.isequal(goal)) {
+      if (table_node.isEqual(goal)) {
         System.out.println("start");
         tree.display_solution(node);
         System.out.println("end");
