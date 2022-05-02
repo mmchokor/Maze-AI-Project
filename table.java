@@ -40,7 +40,11 @@ public class table {
 	@Override
 	public String toString() {
 		String str = "";
-		str += "0 action: " + action + "\n";
+		if (action == "None") {
+			str += "";
+		} else {
+			str += "0 action: " + action + "\n";
+		}
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a.length; j++) {
 				str += a[i][j] + "  ";
