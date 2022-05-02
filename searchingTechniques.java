@@ -64,43 +64,6 @@ public class searchingTechniques {
       }
       
     }
-    /*switch (op) {
-      case 'L':
-        if (after.getA()[i][j] == character && after.getA()[i][j - 1] == walkable && after.getA()[i][j - 1] != wall) {
-          after.a[i][j] = character;
-          after.a[i][j - 1] = walkable;
-        } else {
-          return null;
-        }
-        break;
-      case 'R':
-        if (after.getA()[i][j] == character  && after.getA()[i][j + 1] == walkable && after.getA()[i][j + 1] != wall) {
-          after.a[i][j] = character;
-          after.a[i][j + 1] = walkable;
-        } else {
-          return null;
-        }
-        break;
-      case 'D':
-        if (after.getA()[i][j] == character  && before.getA()[i + 1][j] != wall && after.getA()[i + 1][j] == walkable) {
-          after.a[i][j] = character;
-          after.a[i + 1][j] = walkable;
-        } else {
-          return null;
-        }
-        break;
-      case 'U':
-        if (after.getA()[i][j] == character  && before.getA()[i - 1][j] != wall && after.getA()[i - 1][j] == walkable) {
-          after.a[i][j] = character;
-          after.a[i - 1][j] = walkable;
-        } else {
-          return null;
-        }
-        break;
-      default:
-        return null;
-    }
-    */
     return null;
   }
 

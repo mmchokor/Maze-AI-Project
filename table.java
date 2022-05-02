@@ -61,19 +61,6 @@ public class table {
 		}
 	}
 
-	public boolean isequal(table t) {
-		if (t == null)
-			return false;
-		for (int ii = 0; ii < a.length; ii++) {
-			for (int jj = 0; jj < a.length; jj++) {
-				if (a[ii][jj] != t.a[ii][jj]) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-
 	public boolean isEqual(table t) {
 		if (t == null)
 			return false;
