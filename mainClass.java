@@ -112,6 +112,6 @@ public class mainClass {
                 e.printStackTrace();
             }
         } while (userInput != 6);
+        input.close();
     }
-
 }
