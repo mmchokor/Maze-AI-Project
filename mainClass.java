@@ -7,25 +7,6 @@ public class mainClass {
 
         int userInput = 0;
 
-        // System.out.println("Solution using depth first search: ");
-        // st.depth(tree, goal);
-
-        // // test iterative
-        // System.out.println("Solution using iterative deepening search: ");
-        // st.iterative_deepening(tree, goal);
-
-        // test breadth first search
-        // System.out.println("Solution using Breadth");
-        // st.breadth(tree, goal);
-
-        // // test Uniform cost search
-        // System.out.println("Solution using Uniform cost search: ");
-        // st.UniformCostSearch(tree, goal);
-
-        // // test A*
-        // System.out.println("Solution using A*: ");
-        // st.AStar(tree, goal);
-
         do {
             table before = new table();
             table goal = new table();
