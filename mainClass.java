@@ -13,16 +13,16 @@ public class mainClass {
 
             // make 2 arrays, startMatrix and goalMatrix of size 6 by 6
             int[][] startMatrix = { { 2, 2, 2, 2, 2, 2 },
-                    { 2, 1, 1, 1, 2, 2 },
-                    { 2, 1, 2, 1, 1, 2 },
-                    { 2, 1, 1, 1, 2, 2 },
+                    { 2, 1, 1, 1, 1, 2 },
+                    { 2, 1, 2, 2, 1, 2 },
+                    { 2, 1, 1, 1, 1, 2 },
                     { 2, 0, 2, 1, 1, 2 },
                     { 2, 2, 2, 2, 2, 2 } };
 
             int[][] goalMatrix = { { 2, 2, 2, 2, 2, 2 },
-                    { 2, 1, 1, 1, 2, 2 },
-                    { 2, 1, 2, 1, 0, 2 },
-                    { 2, 1, 1, 1, 2, 2 },
+                    { 2, 1, 0, 1, 1, 2 },
+                    { 2, 1, 2, 2, 1, 2 },
+                    { 2, 1, 1, 1, 1, 2 },
                     { 2, 1, 2, 1, 1, 2 },
                     { 2, 2, 2, 2, 2, 2 } };
 
@@ -41,6 +41,8 @@ public class mainClass {
             // printing the maze before the search
             System.out.println("| Initial state of the Maze:                                  |\n");
             System.out.println(before.toString());
+            System.out.println("| Goal state of the Maze:                                     |\n");
+            System.out.println(goal.toString());
             System.out.println("---------------------------------------------------------------");
             
             // The menu
@@ -88,7 +90,7 @@ public class mainClass {
             // pause the program for user to see the result
             try {
                 System.out.println("The program will pause for 10 seconds for you to see the result");
-                Thread.sleep(10000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
