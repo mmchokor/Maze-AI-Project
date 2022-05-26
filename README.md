@@ -6,7 +6,7 @@
 
 ## Project Objective
 
-
+The aim of this project is to build an AI that is capable to find a path to exit out of the maze using many searching technqiues
 
 ---
 
